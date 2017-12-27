@@ -29,9 +29,9 @@ public class Server extends HttpServlet {
 	static Integer statusBiezacy=0;
 	boolean ustawionoPozaEsp = false;
 
-	static List<LightSwitch> lightSwitchesList = new ArrayList<>();
-	static LightSwitch l1 = new LightSwitch("0");
-	static LightSwitch l2 = new LightSwitch("d1c2d3a4");
+	static public List<LightSwitch> lightSwitchesList = new ArrayList<>();
+	static LightSwitch l1 = new LightSwitch("2c3ae8359ef");
+	static LightSwitch l2 = new LightSwitch("6019449b4c6");
 	
 	static {
 	lightSwitchesList.add(l1);
@@ -41,42 +41,24 @@ public class Server extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException, ParseException {
 		
-		int licznik=0;
-		
 		res.setContentType("text/html; charset=utf-8");
 		PrintWriter pw = res.getWriter();
 		
 		Integer status = Integer.parseInt(req.getParameter("status"));
 		String client = req.getParameter("client");
-		//System.out.println("klient: "+client);
-		
-	//	System.out.println("status " + status);
-		
-		
-		//tu trzeba stwierdzić, czy zapytanie było z esp, czy z przeglądarki i jakiego urządzenia dotyczy
-		//jakiegoś trima na stringu, żeby stwierdzić, czy przekazuję mac, czy P+mac
-		
-	
 		
 		for (LightSwitch light : lightSwitchesList) {
-	//		System.out.println("id: " + light.getId());
-	//		System.out.println("status z LightSwitch: " + light.getStatusBiezacy());
-				if(light.getId().equals(client)) {
+				if(client.equals(light.getId())) {
 					
-					//System.out.println("id trafionego: " + light.getId());
-					//set status biezacy - ustawiam status jaki ma być na esp
-
-					light.setStatusBiezacy(statusBiezacy);
 					light.setStatus(status, client);
-					statusBiezacy = light.getStatusBiezacy();
-				}
-				if(client.equals("1")) {  /// w equals "p"+light.getId()
+					pw.println(light.getStatusBiezacy());
 					
-					light.setStatusBiezacy(statusBiezacy);
-					light.setStatus(status, client);
-					statusBiezacy = light.getStatusBiezacy();
 				}
-				
+				if(client.equals("p"+light.getId())) {
+					
+					light.setStatus(status, client);
+					
+				}
 		
 				//mapowanie obiektowo relacyjne
 				//for (LightSwitch light : lightSwitchesList) {
@@ -86,14 +68,14 @@ public class Server extends HttpServlet {
 				//update do bazy 
 				
 				//select id from lightSwitch where id=light.getId
+		
+				
+				
 				
 		}
+				
+	}
 		
-		System.out.println("status biezacy z serwera: " + statusBiezacy);
 		
-		pw.println();	
-		pw.println(statusBiezacy);
-		
-		}
 
 }

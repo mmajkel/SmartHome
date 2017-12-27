@@ -6,7 +6,6 @@ public class LightSwitch {
 	private Integer statusBiezacy = 0;
 	boolean ustawionoPozaEsp = false;
 //	private String client;
-	
 	public LightSwitch(String id){
 		this.id = id;
 	}
@@ -26,14 +25,14 @@ public class LightSwitch {
 		
 		//System.out.println("przekazany klient: "+client);
 		
-		if (!status.equals(statusBiezacy) && client.equals("1")) {
+		if (!status.equals(statusBiezacy) && client.equals("p"+id)) {
 			ustawionoPozaEsp = true;
 			setStatusBiezacy(status);
 			
 			System.out.println("weszło w ifa jak klient jest przegladarka");
 			System.out.println("przekazany status: "+status);
 		}
-		if (!status.equals(statusBiezacy) && !client.equals("0")) {		
+		if (!status.equals(statusBiezacy) && client.equals(id)) {		
 			if (ustawionoPozaEsp) {
 				ustawionoPozaEsp = false;
 				System.out.println("weszło w ustawiono poza ESP!!!");
