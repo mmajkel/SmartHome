@@ -14,10 +14,9 @@
  	position:absolute;
  	top:-1px;
  	left:-1px;
- 	width:1px;
- 	height:1px; 
+ 	display:none;
 }
-	
+
 </style>
 
 
@@ -26,46 +25,49 @@
 
 function reload(){
 	$("#statusBiezacy").load(" #statusBiezacy");
-	
-		
-		
-	
-	
-	setTimeout(reload,600);
-}
 
+	
+	/*
+	if (status == "1"){
+		document.getElementById("wl1").style.display = "none";
+		document.getElementById("wyl1").style.display = "block";
+		
+	}else if(status == "0"){
+		document.getElementById("wyl1").style.display = "none";
+		document.getElementById("wl1").style.display = "block";
+	}
+	
+	*/
+	setTimeout(reload,300);
+
+}
 
 </script>
 </head>
 <body onload="reload()">
-
+<!--  !! zmienić sposób przesyłania formularza na JQuery  -->
 	<iframe class="hidden" name="hidden"></iframe>
 
-	<a target="hidden" href="witaj?status=1&client=p<%
+	<div id="statusBiezacy">
+	<a id="wl1" target="hidden" href="witaj?status=1&client=p<%
 		out.print(Server.lightSwitchesList.get(0).getId());
 	%> ">WL</a></br>
-	<a target="hidden" href="witaj?status=0&client=p<%
+	<a id="wyl1" target="hidden" href="witaj?status=0&client=p<%
 		out.print(Server.lightSwitchesList.get(0).getId());
-	%>">WYL</a>
+	%> ">WYL</a>
+		<div id="status"><% out.print(Server.lightSwitchesList.get(0).getStatusBiezacy());%></div>
 	
-	<div id="statusBiezacy">
+	</br>
+	</br>
 	
-	<%
-	out.print(Server.lightSwitchesList.get(0).getStatusBiezacy());
-	
-	%>
-	
+	<a id="wl2" target="hidden" href="witaj?status=1&client=p<%
+		out.print(Server.lightSwitchesList.get(1).getId());
+	%> ">WL</a></br>
+	<a id="wyl2" target="hidden" href="witaj?status=0&client=p<%
+		out.print(Server.lightSwitchesList.get(1).getId());
+	%> ">WYL</a>
+		<div id="status"><% out.print(Server.lightSwitchesList.get(1).getStatusBiezacy());%></div>
 	</div>
-	
-	</br>
-	</br>
-	
-	<a href="witaj?status=1&client=p<%
-			out.print(Server.lightSwitchesList.get(1).getId());
-	%>">WL</a></br>
-	<a href="witaj?status=0&client=p<%
-			out.print(Server.lightSwitchesList.get(1).getId());
-	%>">WYL</a>
 	
 </body>
 </html>

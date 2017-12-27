@@ -32,7 +32,7 @@ public class Server extends HttpServlet {
 	static public List<LightSwitch> lightSwitchesList = new ArrayList<>();
 	static LightSwitch l1 = new LightSwitch("2c3ae8359ef");
 	static LightSwitch l2 = new LightSwitch("6019449b4c6");
-	
+//	to jest hardcode
 	static {
 	lightSwitchesList.add(l1);
 	lightSwitchesList.add(l2);
@@ -49,15 +49,11 @@ public class Server extends HttpServlet {
 		
 		for (LightSwitch light : lightSwitchesList) {
 				if(client.equals(light.getId())) {
-					
 					light.setStatus(status, client);
 					pw.println(light.getStatusBiezacy());
-					
 				}
 				if(client.equals("p"+light.getId())) {
-					
 					light.setStatus(status, client);
-					
 				}
 		
 				//mapowanie obiektowo relacyjne
@@ -68,14 +64,6 @@ public class Server extends HttpServlet {
 				//update do bazy 
 				
 				//select id from lightSwitch where id=light.getId
-		
-				
-				
-				
 		}
-				
 	}
-		
-		
-
 }
