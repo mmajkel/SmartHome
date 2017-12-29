@@ -38,7 +38,7 @@ function reload(){
 	}
 	
 	*/
-	setTimeout(reload,300);
+	setTimeout(reload,9000);
 
 }
 
@@ -66,8 +66,38 @@ function reload(){
 	<a id="wyl2" target="hidden" href="witaj?status=0&client=p<%
 		out.print(Server.lightSwitchesList.get(1).getId());
 	%> ">WYL</a>
-		<div id="status"><% out.print(Server.lightSwitchesList.get(1).getStatusBiezacy());%></div>
+		<div id="status" ><a target="hidden" href="witaj?status=<% 
+		
+		
+		
+		if(Server.lightSwitchesList.get(1).getStatusBiezacy() == 1){
+			out.print("0");
+		}else{
+			out.print("1");
+		}
+		out.print("&client=p"+Server.lightSwitchesList.get(1).getId());
+		
+		%>">
+		<%
+		
+		if(Server.lightSwitchesList.get(1).getStatusBiezacy() == 1){
+			out.print("WL");
+		}else{
+			out.print("WYL");
+		}
+		
+		%>
+		
+		</a></div>
+	
+	
+	
+	
 	</div>
+	
+	<br/>
+	<br/>
+	
 	
 </body>
 </html>
