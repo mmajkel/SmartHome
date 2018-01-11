@@ -25,20 +25,7 @@
 
 function reload(){
 	$("#statusBiezacy").load(" #statusBiezacy");
-
-	
-	/*
-	if (status == "1"){
-		document.getElementById("wl1").style.display = "none";
-		document.getElementById("wyl1").style.display = "block";
-		
-	}else if(status == "0"){
-		document.getElementById("wyl1").style.display = "none";
-		document.getElementById("wl1").style.display = "block";
-	}
-	
-	*/
-	setTimeout(reload,9000);
+	setTimeout(reload,300);
 
 }
 
@@ -49,26 +36,31 @@ function reload(){
 	<iframe class="hidden" name="hidden"></iframe>
 
 	<div id="statusBiezacy">
-	<a id="wl1" target="hidden" href="witaj?status=1&client=p<%
-		out.print(Server.lightSwitchesList.get(0).getId());
-	%> ">WL</a></br>
-	<a id="wyl1" target="hidden" href="witaj?status=0&client=p<%
-		out.print(Server.lightSwitchesList.get(0).getId());
-	%> ">WYL</a>
-		<div id="status"><% out.print(Server.lightSwitchesList.get(0).getStatusBiezacy());%></div>
 	
-	</br>
-	</br>
-	
-	<a id="wl2" target="hidden" href="witaj?status=1&client=p<%
-		out.print(Server.lightSwitchesList.get(1).getId());
-	%> ">WL</a></br>
-	<a id="wyl2" target="hidden" href="witaj?status=0&client=p<%
-		out.print(Server.lightSwitchesList.get(1).getId());
-	%> ">WYL</a>
 		<div id="status" ><a target="hidden" href="witaj?status=<% 
 		
+		if(Server.lightSwitchesList.get(0).getStatusBiezacy() == 1){
+			out.print("0");
+		}else{
+			out.print("1");
+		}
+		out.print("&client=p"+Server.lightSwitchesList.get(0).getId());
 		
+		%>">
+		
+		<%
+		
+		if(Server.lightSwitchesList.get(0).getStatusBiezacy() == 1){
+			out.print("<img src='img/wl.jpg'");
+		}else{
+			out.print("<img src='img/wyl.jpg'");
+		}
+		
+		%>
+		
+		</a></div>
+		
+		<div id="status" ><a target="hidden" href="witaj?status=<% 
 		
 		if(Server.lightSwitchesList.get(1).getStatusBiezacy() == 1){
 			out.print("0");
@@ -78,20 +70,19 @@ function reload(){
 		out.print("&client=p"+Server.lightSwitchesList.get(1).getId());
 		
 		%>">
+		
 		<%
 		
 		if(Server.lightSwitchesList.get(1).getStatusBiezacy() == 1){
-			out.print("WL");
+			out.print("<img src='img/wl.jpg'");
 		}else{
-			out.print("WYL");
+			out.print("<img src='img/wyl.jpg'");
 		}
 		
 		%>
 		
 		</a></div>
-	
-	
-	
+		
 	
 	</div>
 	
