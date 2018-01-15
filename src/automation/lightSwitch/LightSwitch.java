@@ -3,39 +3,35 @@ package automation.lightSwitch;
 public class LightSwitch {
 	
 	private String id;
-	private Integer statusBiezacy = 0;
-	boolean ustawionoPozaEsp = false, dostepny = true;
+	private Integer actualStatus = 0;
+	boolean changeOutside = false;
 	public LightSwitch(String id){
 		this.id = id;
 	}
 	public String getId() {
 		return id;
 	}
-	private void setStatusBiezacy(Integer statusBiezacy) {
-		this.statusBiezacy = statusBiezacy;
+	private void setActualStatus(Integer actualStatus) {
+		this.actualStatus = actualStatus;
 	}
-	public void setDostepny(boolean dostepny) {
-		this.dostepny = dostepny;
-	}
+
 	public void setStatus(Integer status, String client) {
 
-		if (dostepny) {
-		
-			if (!status.equals(statusBiezacy) && client.equals("p"+id)) {
-				ustawionoPozaEsp = true;
-				setStatusBiezacy(status);
+			if (!status.equals(actualStatus) && client.equals("p"+id)) {
+				changeOutside = true;
+				setActualStatus(status);
 			}
-			if (!status.equals(statusBiezacy) && client.equals(id)) {		
-				if (ustawionoPozaEsp) {
-					ustawionoPozaEsp = false;
+			if (!status.equals(actualStatus) && client.equals(id)) {		
+				if (changeOutside) {
+					changeOutside = false;
 				}
 				else {
-					setStatusBiezacy(status);
+					setActualStatus(status);
 				}
 			}
 		}
-	}
-	public Integer getStatusBiezacy() {
-		return statusBiezacy;
+
+	public Integer getActualStatus() {
+		return actualStatus;
 	}
 }

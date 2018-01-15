@@ -24,8 +24,8 @@
 <script type="text/javascript">
 
 function reload(){
-	$("#statusBiezacy").load(" #statusBiezacy");
-	setTimeout(reload,300);
+	$("#actualStatus").load(" #actualStatus");
+	//setTimeout(reload,300);
 
 }
 
@@ -35,54 +35,30 @@ function reload(){
 <!--  !! zmienić sposób przesyłania formularza na JQuery  -->
 	<iframe class="hidden" name="hidden"></iframe>
 
-	<div id="statusBiezacy">
+	<div id="actualStatus">
 	
-		<div id="status" ><a target="hidden" href="witaj?status=<% 
+	<!--  ŻARÓWKI -->
+	
+	<%
+	for (int i=0; i<Server.lightSwitchesList.size(); i++){
 		
-		if(Server.lightSwitchesList.get(0).getStatusBiezacy() == 1){
-			out.print("0");
-		}else{
-			out.print("1");
-		}
-		out.print("&client=p"+Server.lightSwitchesList.get(0).getId());
-		
-		%>">
-		
-		<%
-		
-		if(Server.lightSwitchesList.get(0).getStatusBiezacy() == 1){
-			out.print("<img src='img/wl.jpg'");
-		}else{
-			out.print("<img src='img/wyl.jpg'");
-		}
-		
-		%>
-		
-		</a></div>
-		
-		<div id="status" ><a target="hidden" href="witaj?status=<% 
-		
-		if(Server.lightSwitchesList.get(1).getStatusBiezacy() == 1){
-			out.print("0");
-		}else{
-			out.print("1");
-		}
-		out.print("&client=p"+Server.lightSwitchesList.get(1).getId());
-		
-		%>">
-		
-		<%
-		
-		if(Server.lightSwitchesList.get(1).getStatusBiezacy() == 1){
-			out.print("<img src='img/wl.jpg'");
-		}else{
-			out.print("<img src='img/wyl.jpg'");
-		}
-		
-		%>
-		
-		</a></div>
-		
+		out.print("<div id=status ><a target=hidden href=witaj?status=");			
+				if(Server.lightSwitchesList.get(i).getActualStatus() == 1){
+					out.print("0");
+				}else{
+					out.print("1");
+				}
+				out.print("&client=p"+Server.lightSwitchesList.get(i).getId()+">");
+				
+				if(Server.lightSwitchesList.get(i).getActualStatus() == 1){
+					out.print("<img src='img/wl.jpg'>");
+				}else{
+					out.print("<img src='img/wyl.jpg'>");
+				}
+		out.print("</a></div>");
+	}
+	
+	%>		
 	
 	</div>
 	

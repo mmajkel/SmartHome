@@ -26,20 +26,18 @@ import automation.lightSwitch.LightSwitch;
 @SuppressWarnings("serial")
 public class Server extends HttpServlet {
 	
-	static Integer statusBiezacy=0;
-	boolean ustawionoPozaEsp = false;
-
 	static public List<LightSwitch> lightSwitchesList = new ArrayList<>();
 	static LightSwitch l1 = new LightSwitch("2c3ae8359ef");
 	static LightSwitch l2 = new LightSwitch("6019449b4c6");
-//	to jest hardcode
+
 	static {
 	lightSwitchesList.add(l1);
 	lightSwitchesList.add(l2);
 	}
 	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException, ParseException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) 
+			throws IOException, ServletException, ParseException {
 		
 		res.setContentType("text/html; charset=utf-8");
 		PrintWriter pw = res.getWriter();
@@ -50,20 +48,11 @@ public class Server extends HttpServlet {
 		for (LightSwitch light : lightSwitchesList) {
 				if(client.equals(light.getId())) {
 					light.setStatus(status, client);
-					pw.println(light.getStatusBiezacy());
+					pw.println(light.getActualStatus());
 				}
 				if(client.equals("p"+light.getId())) {
 					light.setStatus(status, client);
 				}
-		
-				//mapowanie obiektowo relacyjne
-				//for (LightSwitch light : lightSwitchesList) {
-//			
-//				//if (!light.getStatus.equlas(light.getStatusBiezacy)){
-				
-				//update do bazy 
-				
-				//select id from lightSwitch where id=light.getId
 		}
 	}
 }
