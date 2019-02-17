@@ -137,9 +137,7 @@
 		
 		
 		<section>
-			<div id=firstImg>
-							
-			</div>
+
 		</section>
 		<footer>
 		
