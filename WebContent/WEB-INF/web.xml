@@ -11,20 +11,21 @@
   </welcome-file-list>
   
   <servlet>
-  	<servlet-name>Light switch</servlet-name>
-  	<servlet-class>automation.server.Server</servlet-class>
+    <servlet-name>MyHome</servlet-name>
+    <jsp-file>/myhome.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Light switch</servlet-name>
-  	<url-pattern>/witaj</url-pattern>
+    <servlet-name>MyHome</servlet-name>
+    <url-pattern>/myhome</url-pattern>
   </servlet-mapping>
+
   <servlet>
-  	<servlet-name>Client-web</servlet-name>	
-  	<servlet-class>automation.lightSwitch.LightSwitches</servlet-class>
+    <servlet-name>MyDrive</servlet-name>
+    <jsp-file>/mydrive.jsp</jsp-file>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Client-web</servlet-name>
-  	<url-pattern>/Switches</url-pattern>
-  </servlet-mapping>
+    <servlet-name>MyDrive</servlet-name>
+    <url-pattern>/mydrive</url-pattern>
+  </servlet-mapping>  
   
 </web-app>
