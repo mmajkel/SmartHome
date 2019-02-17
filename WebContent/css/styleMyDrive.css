@@ -1,0 +1,24 @@
+main{
+	background-image: url(../img/homeBckgrd.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	width:100%;
+	height:100vh;
+	z-index:999;
+	
+	display:grid;
+	grid-template-columns:0.1fr 1fr 0.1fr;
+	grid-template-areas:
+		". folders ."
+		;
+}
+#mainDrive{
+	grid-area:folders;
+	margin-top:100px;
+	display:flex;
+	flex-wrap:wrap;
+}
+.driveContent{
+	margin:10px;
+}

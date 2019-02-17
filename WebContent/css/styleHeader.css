@@ -1,0 +1,21 @@
+/* basic conf */
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Life+Savers');
+
+body, html {
+	background-color: #333;
+	margin: 0;
+	padding: 0;
+	font-family: 'Amatic SC', cursive, sans-serif;
+	font-size:40px;
+}
+ a:visited{
+	color: #777096
+	text-decoration: none;
+}
+a:link{
+	color: #777096;
+	text-decoration: none;
+}
+h1{
+	margin:20px;
+}

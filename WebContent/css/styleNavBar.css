@@ -1,0 +1,155 @@
+:root{
+	--background: #fff;
+}
+*,*::before, *::after{
+	box-sizing:border-box;
+}
+/* navbar start */
+
+header{
+	background: none;
+	text-align:center;
+	position:fixed;
+	z-index:999;
+	width:100%;
+	display:grid;
+	grid-template-columns: 1fr auto 1fr;
+	grid-template-areas:
+		"menuButton logo logoffButton"
+		;
+}
+#logo{
+	grid-area:logo;
+	margin:0px;
+}
+	#logo p{
+		margin:0;
+	}
+#logoffInput{
+	display:none;
+}
+#logoff{
+	grid-area:logoffButton;
+	margin-right:1em;
+	display:flex;
+	justify-content:flex-end;
+	align-items:center;
+}
+	#logoffSubmit{
+		border:none;
+		height:35px;
+		width:65px;
+		background-color:#98dcec;
+		font-family:'Amatic SC';
+		font-size:25px;
+	}
+	#logoffSubmit:hover{
+		background-color:#0092b585;
+		cursor:pointer;
+	}
+.navToggle{
+ 	display:none; 
+}
+.navToggleLabel{
+	grid-area:menuButton;
+	position: absolute;
+	top:0;
+	left:0;
+	margin-left:1em;
+	height:100%;
+	display:flex;
+	align-items:center;
+}
+.navToggleLabel span,
+.navToggleLabel span::before,
+.navToggleLabel span::after{
+	display: block;
+	background: black;
+	height:2px;
+	width:1em;
+	border-radius:2px;
+	position:relative;
+}
+.navToggleLabel span::before,
+.navToggleLabel span::after{
+	content:'';
+	position:absolute;
+}
+.navToggleLabel span::before{
+	bottom:7px;
+}
+.navToggleLabel span::after{
+	top:7px;
+}
+nav{
+	position:absolute;
+	text-align:left;
+	top:100%;
+	left:0;
+	background: none;
+	width:100%;
+	transform:scale(1,0);
+	transform-origin:top;
+	transition: transform 250ms ease-in-out;
+}
+nav ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+nav li{
+	margin-left: 1em;
+	text-align:center;
+}
+nav a{
+	color: black;
+	text-decoration:none;
+	opacity:0;
+	transition:opacity 100ms ease-in-out;
+}
+nav a:hover{
+	color:aliceblue;
+}
+.navToggle:checked ~nav{
+	transform:scale(1,1);
+}
+.navToggle:checked ~nav a{
+	opacity:1;
+	transition:opacity 100ms ease-in-out 200ms;
+}
+
+@media screen and (min-width: 1000px) {
+	 .navToggleLabel {
+	   display: none;
+	 }
+	
+	 header {
+	   display: grid;
+	   grid-template-columns: 1fr auto minmax(600px, auto) 1fr 1fr;
+	 	grid-template-areas:
+	 	". logo nav .logoffButton";
+	 }	 
+	 nav {
+	   grid-area:nav;
+	   all: unset;
+	   grid-column: 3 / 4;
+	   display: flex;
+	   justify-content: flex-end;
+	   align-items: center;
+	 }
+	 
+	 nav ul {
+	   display: flex;
+	 }
+	 
+	 nav li {
+	   margin-left: 2em;
+	   margin-bottom: 0;
+	 }
+	 
+	 nav a {
+	   opacity: 1;
+	 }
+
+}
+
